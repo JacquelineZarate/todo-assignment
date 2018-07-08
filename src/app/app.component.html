@@ -1,0 +1,21 @@
+<div class="card gray shadow-lg p-3 mb-5">
+  <div class="row">
+    <div class="col">
+      <h2 class="text-center">{{ name }}'s Todo List</h2>
+    </div>
+  </div>
+  <div class="row width" *ngFor="let chore of chores">
+    <div class="col">
+      <p class="mb-2">{{ chore }}
+        <i class="far fa-trash-alt float-right ml-2" (click)="deleteTodo(chore)"></i>
+        <i class="far fa-edit float-right" (click)="editTodo(chore)"></i>
+      </p>
+    </div>
+  </div>
+    <div class="row text-center">
+      <div class="col">
+        <input [(ngModel)]="newTodo">
+        <button (click)="createTodo()">Create Todo</button>
+      </div>
+    </div>
+</div>
