@@ -6,28 +6,34 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  newTodo = "";
-  name = "Jacqueline";
-  chores = [
-    "Take out trash",
-    "Feed cats",
-    "Clean litter box",
-    "Make food",
-    "Wash dishes"
-  ];
+  newTodo: string = "";
+  chores = [];
   editTodo(chore) {
     let index = this.chores.indexOf(chore);
-    console.log(chore);
-    this.chores[index] = prompt ("Please write new todo");
+    let tempTodo = this.chores[index].name;
+    this.chores[index].name = prompt ("Please write new todo");
+
+    if (this.chores[index].name == null) {
+      this.chores[index].name = tempTodo;
+    }
   }
   createTodo() {
-    console.log(this.newTodo);
-    this.chores.push(this.newTodo);
+    let trimmedInput = this.newTodo.trim();
+    if(trimmedInput !== "") {
+    this.chores.push(
+    {
+      isChecked: false,
+      name: this.newTodo
+    }
+  );
+    }
     this.newTodo = "";
   };
   deleteTodo(chore) {
     let index = this.chores.indexOf(chore);
-    console.log(index);
     this.chores.splice(index, 1);
   };
+  checkOffTodo(chore) {
+    chore.isChecked = (chore.isChecked) ? false: true;
+  }
 }

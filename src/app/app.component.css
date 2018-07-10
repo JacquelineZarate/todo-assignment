@@ -25,3 +25,10 @@ p {
 h2, button {
     font-family: 'Open Sans', sans-serif;
 }
+i:hover { 
+    color: rgb(200, 142, 255);
+}
+.strike {
+    text-decoration: line-through;
+    opacity: 0.5;
+}
